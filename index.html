@@ -1,22 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emergencia SUS- Fila Virtual</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-<div class="container-fluid"></div>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="bg-light">
+      <header class="container">
+        <div class="text-center bg-danger">
+          <h2 class="lead">
+            <a class="navbar-brand text-white" href="index.html">
+              Fila Virtual Emergencia SUS
+            </a>
+          </h2>
+        </div>
 
+        <hr class="my-2" />
+        <div class="text-center">
+          Encontre hospitais próximos com menor tempo de espera para
+          atendimento. Insira sua localização e receba uma lista de hospitais
+          classificados pelo tempo médio de espera. Acesse informações
+          detalhadas sobre especialidades, médicos de plantão e avaliações de
+          usuários para um atendimento rápido e eficiente.
+        </div>
+        <hr class="my-2" />
+        <div class="filtrar my-3 text-center">
+          <h2 class="">Filtrar por</h2>
+          <form
+            class="form-check d-flex flex-column align-items-start justify-content-center align-items-center"
+          >
+            <label>
+              <input type="radio" name="filtro" value="distancia" checked />
+              Filtrar por menor distância
+            </label>
+            <label>
+              <input type="radio" name="filtro" value="espera" />
+              Filtrar por menor espera
+            </label>
+            <label>
+              <input type="radio" name="filtro" value="pacientes" />
+              Filtrar por número de pacientes
+            </label>
+          </form>
+        </div>
+      </header>
+      <main class="container my-3 col-12 text-center">
+        <h1>Hospitais Proximos a você</h1>
+        <div
+          class="container d-flex flex-column justify-content-center align-items-center"
+        >
+          <div
+            class="card d-flex justify-content-center align-items-center text-center"
+            style="width: 18rem"
+          >
+            <img
+              src="https://placehold.co/300x300"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Hospital Mãe de Deus</h5>
+              <p class="card-text">Pacientes na fila</p>
+              <h1>12</h1>
+              <p class="card-text">Estimativa 1h58min</p>
+              <a href="#" class="btn btn-primary text-center"
+                >11Km de distancia</a
+              >
+            </div>
+          </div>
+          <div
+            class="card d-flex justify-content-center align-items-center my-3 text-center"
+            style="width: 18rem"
+          >
+            <img
+              src="https://placehold.co/300x300"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Hospital Santa Casa</h5>
+              <p class="card-text">Pacientes na fila</p>
+              <h1>14</h1>
+              <p class="card-text">Estimativa 2h28min</p>
+              <a href="#" class="btn btn-primary text-center"
+                >12Km de distancia</a
+              >
+            </div>
+          </div>
+          <div
+            class="card d-flex justify-content-center align-items-center text-center"
+            style="width: 18rem"
+          >
+            <img
+              src="https://placehold.co/300x300"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Hospital São Lucas PUC</h5>
+              <p class="card-text">Pacientes na fila</p>
+              <h1>16</h1>
+              <p class="card-text">Estimativa 2h38min</p>
+              <a href="#" class="btn btn-primary text-center"
+                >16Km de distancia</a
+              >
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="bg-body-tertiary text-center text-lg-start">
+        <div class="text-center p-3">
+          © 2024 Copyright
+          <a class="text-body" href="#">Douglas Santos</a>
+        </div>
+      </footer>
+    </div>
 
-
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
