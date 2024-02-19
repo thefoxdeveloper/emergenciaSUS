@@ -1,1 +1,1 @@
-https://thefoxdeveloper.github.io/emegenciaSUS/
+https://thefoxdeveloper.github.io/emergenciaSUS/
