@@ -152,7 +152,7 @@ function getDistanceBetween(address1, address2) {
 function renderCard(hospital) {
   cardsContainer.innerHTML += `
       <div class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center" style="width: 18rem">
-        <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
+        <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${hospital.nome}</h5>
           <p class="card-text">Pacientes na fila</p>
@@ -166,7 +166,6 @@ function renderCard(hospital) {
 
 function montarSiteDistancia(hospitais) {
   hospitais.sort((a, b) => a.distancia - b.distancia);
-  cardsContainer.innerHTML = "";
   hospitais.forEach((hospital) => {
     renderCard(hospital); // Renderiza o card com a nova distância
   });
