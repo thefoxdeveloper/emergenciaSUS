@@ -37,6 +37,20 @@
             class="form-check d-flex flex-md-row mx-md-3 flex-column gap-md-3 justify-content-center align-items-center"
           >
             <label>
+              <input type="radio" name="idade" value="crianca" checked />
+              Filtrar por atendimento pediatra
+            </label>
+            <label>
+              <input type="radio" name="idade" value="adulto" />
+              Filtrar por atendimento adulto
+            </label>
+          </form>
+          <hr class="my-2" />
+          <h2 class="">Listar por</h2>
+          <form
+            class="form-check d-flex flex-md-row mx-md-3 flex-column gap-md-3 justify-content-center align-items-center"
+          >
+            <label>
               <input type="radio" name="filtro" value="distancia" checked />
               Filtrar por menor distância
             </label>
@@ -55,65 +69,8 @@
         <h1>Hospitais Proximos a você</h1>
         <div
           class="container d-flex flex-md-row flex-column justify-content-center align-items-center"
-        >
-          <div
-            class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center"
-            style="width: 18rem"
-          >
-            <img
-              src="https://placehold.co/300x300"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Hospital Mãe de Deus</h5>
-              <p class="card-text">Pacientes na fila</p>
-              <h1>12</h1>
-              <p class="card-text">Estimativa 1h58min</p>
-              <a href="#" class="btn btn-primary text-center"
-                >11Km de distancia</a
-              >
-            </div>
-          </div>
-          <div
-            class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center"
-            style="width: 18rem"
-          >
-            <img
-              src="https://placehold.co/300x300"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Hospital Santa Casa</h5>
-              <p class="card-text">Pacientes na fila</p>
-              <h1>14</h1>
-              <p class="card-text">Estimativa 2h28min</p>
-              <a href="#" class="btn btn-primary text-center"
-                >12Km de distancia</a
-              >
-            </div>
-          </div>
-          <div
-            class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center"
-            style="width: 18rem"
-          >
-            <img
-              src="https://placehold.co/300x300"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Hospital São Lucas PUC</h5>
-              <p class="card-text">Pacientes na fila</p>
-              <h1>16</h1>
-              <p class="card-text">Estimativa 2h38min</p>
-              <a href="#" class="btn btn-primary text-center"
-                >16Km de distancia</a
-              >
-            </div>
-          </div>
-        </div>
+          id="cardsContainer"
+        ></div>
       </main>
       <footer class="bg-body-tertiary text-center text-lg-start">
         <div class="text-center p-3">
@@ -122,7 +79,7 @@
         </div>
       </footer>
     </div>
-
+    <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
