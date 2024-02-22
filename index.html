@@ -10,9 +10,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="bg-light">
+    <div class="bg-light vh-100">
       <header class="container">
         <div class="text-center bg-danger">
           <h2 class="lead">
@@ -50,13 +51,11 @@
           <div
             class="d-flex flex-md-row mx-md-3 flex-column gap-md-3 justify-content-center align-items-center"
           >
-            <button onclick="montarSite(hospitais)">
+            <button onclick="montarSiteDistancia(hospitais)">
               Filtrar por menor distância
             </button>
-            <button onclick="montarSite(hospitais)">
-              Filtrar por menor espera
-            </button>
-            <button onclick="montarSite(hospitais)">
+
+            <button onclick="montarSitePaciente(hospitais)">
               Filtrar por número de pacientes
             </button>
           </div>

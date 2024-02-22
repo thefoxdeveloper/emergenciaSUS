@@ -48,12 +48,6 @@ const hospitais = [
     distancia: "9Km",
   },
   {
-    nome: "Hospital Restinga e Extremo-Sul",
-    fila: 0,
-    tempo_estimado: "0min",
-    distancia: "3Km",
-  },
-  {
     nome: "Hospital de Pronto Socorro de Porto Alegre",
     fila: 25,
     tempo_estimado: "3h",
@@ -72,7 +66,10 @@ function getLocation() {
         (position) => {
           latitude = position.coords.latitude; // Atribuição global dos valores
           longitude = position.coords.longitude;
-          resolve();
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
         },
         (error) => {
           reject(error);
@@ -155,7 +152,7 @@ function getDistanceBetween(address1, address2) {
 function renderCard(hospital) {
   cardsContainer.innerHTML += `
       <div class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center" style="width: 18rem">
-        <img src="https://placehold.co/300x300" class="card-img-top" alt="...">
+        <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${hospital.nome}</h5>
           <p class="card-text">Pacientes na fila</p>
@@ -167,36 +164,52 @@ function renderCard(hospital) {
     `;
 }
 
-getLocation()
-  .then(() => {
-    console.log("Latitude:", latitude);
-    console.log("Longitude:", longitude);
-    return getNearestStreet(latitude, longitude); // Retorna a rua mais próxima
-  })
-  .then((nearestStreet) => {
-    ruaUser = `${nearestStreet.nearestStreet}, ${nearestStreet.city}`; // Atualiza ruaUser com a rua mais próxima
+function montarSiteDistancia(hospitais) {
+  hospitais.sort((a, b) => a.distancia - b.distancia);
+  cardsContainer.innerHTML = "";
+  hospitais.forEach((hospital) => {
+    renderCard(hospital); // Renderiza o card com a nova distância
+  });
+}
+function montarSitePaciente(hospitais) {
+  hospitais.sort((a, b) => a.fila - b.fila);
+  cardsContainer.innerHTML = "";
+  hospitais.forEach((hospital) => {
+    renderCard(hospital); // Renderiza o card com a nova distância
+  });
+}
 
-    // Atualiza a distância de cada hospital no array
-    hospitais.forEach(async (hospital) => {
+async function main() {
+  await getLocation();
+  const nearestStreet = await getNearestStreet(latitude, longitude);
+  const ruaUser = `${nearestStreet.nearestStreet}, ${nearestStreet.city}`;
+  console.log(ruaUser);
+  montarSiteComLoad();
+  await Promise.all(
+    hospitais.map(async (hospital) => {
       try {
         const distance = await getDistanceBetween(
           ruaUser,
           hospital.nome + ", Porto Alegre"
         );
-        hospital.distancia = distance.toFixed(2); // Atualiza a distância no objeto hospital
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  })
-  .then(() => {})
-  .catch((error) => {
-    console.log(error);
-  });
 
-function montarSite(hospitais) {
-  hospitais.sort((a, b) => a.distancia - b.distancia);
-  hospitais.forEach((hospital) => {
-    renderCard(hospital); // Renderiza o card com a nova distância
-  });
+        hospital.distancia = distance.toFixed(2);
+
+        return Promise.resolve();
+      } catch (error) {
+        return;
+      }
+    })
+  );
+  console.log("aqui finalizou tudo");
+  cardsContainer.innerHTML = "";
+  montarSiteDistancia(hospitais);
+}
+
+main()
+  .then(() => console.log("success"))
+  .catch((err) => console.log(err));
+
+function montarSiteComLoad() {
+  cardsContainer.innerHTML += `<div class="lds-ring"><div></div><div></div><div></div><div></div></div>`;
 }
