@@ -47,28 +47,25 @@
           </form>
           <hr class="my-2" />
           <h2 class="">Listar por</h2>
-          <form
-            class="form-check d-flex flex-md-row mx-md-3 flex-column gap-md-3 justify-content-center align-items-center"
+          <div
+            class="d-flex flex-md-row mx-md-3 flex-column gap-md-3 justify-content-center align-items-center"
           >
-            <label>
-              <input type="radio" name="filtro" value="distancia" checked />
+            <button onclick="montarSite(hospitais)">
               Filtrar por menor distância
-            </label>
-            <label>
-              <input type="radio" name="filtro" value="espera" />
+            </button>
+            <button onclick="montarSite(hospitais)">
               Filtrar por menor espera
-            </label>
-            <label>
-              <input type="radio" name="filtro" value="pacientes" />
+            </button>
+            <button onclick="montarSite(hospitais)">
               Filtrar por número de pacientes
-            </label>
-          </form>
+            </button>
+          </div>
         </div>
       </header>
       <main class="container my-3 col-12 text-center">
         <h1>Hospitais Proximos a você</h1>
         <div
-          class="container d-flex flex-md-row flex-column justify-content-center align-items-center"
+          class="container d-flex flex-md-row flex-md-wrap flex-column justify-content-center align-items-center"
           id="cardsContainer"
         ></div>
       </main>

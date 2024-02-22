@@ -152,6 +152,21 @@ function getDistanceBetween(address1, address2) {
     .catch((error) => console.error("Error:", error));
 }
 
+function renderCard(hospital) {
+  cardsContainer.innerHTML += `
+      <div class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center" style="width: 18rem">
+        <img src="https://placehold.co/300x300" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${hospital.nome}</h5>
+          <p class="card-text">Pacientes na fila</p>
+          <h1>${hospital.fila}</h1>
+          <p class="card-text">Estimativa ${hospital.tempo_estimado}</p>
+          <a href="#" class="btn btn-primary text-center">${hospital.distancia} km </a>
+        </div>
+      </div>
+    `;
+}
+
 getLocation()
   .then(() => {
     console.log("Latitude:", latitude);
@@ -161,31 +176,27 @@ getLocation()
   .then((nearestStreet) => {
     ruaUser = `${nearestStreet.nearestStreet}, ${nearestStreet.city}`; // Atualiza ruaUser com a rua mais próxima
 
+    // Atualiza a distância de cada hospital no array
     hospitais.forEach(async (hospital) => {
       try {
         const distance = await getDistanceBetween(
           ruaUser,
           hospital.nome + ", Porto Alegre"
         );
-        cardsContainer.innerHTML += `
-            <div class="card d-flex justify-content-center align-items-center my-3 mx-md-3 text-center" style="width: 18rem">
-              <img src="https://placehold.co/300x300" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">${hospital.nome}</h5>
-                <p class="card-text">Pacientes na fila</p>
-                <h1>${hospital.fila}</h1>
-                <p class="card-text">Estimativa ${hospital.tempo_estimado}</p>
-                <a href="#" class="btn btn-primary text-center">${distance.toFixed(
-                  2
-                )} km </a>
-              </div>
-            </div>
-          `;
+        hospital.distancia = distance.toFixed(2); // Atualiza a distância no objeto hospital
       } catch (error) {
         console.error(error);
       }
     });
   })
+  .then(() => {})
   .catch((error) => {
     console.log(error);
   });
+
+function montarSite(hospitais) {
+  hospitais.sort((a, b) => a.distancia - b.distancia);
+  hospitais.forEach((hospital) => {
+    renderCard(hospital); // Renderiza o card com a nova distância
+  });
+}
